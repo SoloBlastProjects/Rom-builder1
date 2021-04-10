@@ -1,4 +1,5 @@
 #!/bin/bash
+<<<<<<< HEAD
 cd /tmp/rom
 rm -rf .repo
 cd external/selinux 
@@ -19,6 +20,15 @@ export SKIP_API_CHECKS=true
 export SKIP_ABI_CHECKS=true
 cd /tmp/rom
 export CCACHE_DIR=/tmp/ccache  ##use additional flags if you need(optional)
+=======
+cd /tmp/rom # Depends on where source got synced
+rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
+
+# Normal build steps
+. build/envsetup.sh 
+lunch kangos_X01AD-userdebug  ##edit this
+export CCACHE_DIR=/tmp/ccache ##set additional flags if you need(optional)
+>>>>>>> fd8c5f2... kanghub hehe
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 
@@ -38,8 +48,13 @@ make_metalava(){
 }
 
 make_rom(){
+<<<<<<< HEAD
 	mka bacon -j8
 	zip=$(up out/target/product/RMX2193/*zip)
+=======
+	make bacon -j20
+	zip=$(up out/target/product/X01AD/*zip) ##edit this
+>>>>>>> fd8c5f2... kanghub hehe
 	echo " "
 	echo "$zip"
 	curl -sL https://git.io/file-transfer | sh
