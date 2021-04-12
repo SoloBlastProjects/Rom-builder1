@@ -1,34 +1,15 @@
 #!/bin/bash
-<<<<<<< HEAD
-cd /tmp/rom
-rm -rf .repo
-cd external/selinux 
-wget https://raw.githubusercontent.com/SamarV-121/android_vendor_extra/lineage-18.1/patches/external/selinux/0001-Revert-libsepol-Make-an-unknown-permission-an-error-.patch
-patch -p1 < *.patch
-cd /tmp/rom
-cd vendor/qcom/opensource/usb 
-wget https://github.com/LineageOS/android_vendor_qcom_opensource_usb/commit/cec97e1e8e0dc407ea13b583ca6b15dce98b0fbd.patch
-patch -R -p1 < *.patch
-cd /tmp/rom
-cd frameworks/av 
-wget https://github.com/phhusson/platform_frameworks_av/commit/624cfc90b8bedb024f289772960f3cd7072fa940.patch 
-patch -p1 < *.patch
-cd /tmp/rom
-source build/envsetup.sh
-lunch aosp_RMX2193-userdebug
-export SKIP_API_CHECKS=true
-export SKIP_ABI_CHECKS=true
-cd /tmp/rom
-export CCACHE_DIR=/tmp/ccache  ##use additional flags if you need(optional)
-=======
 cd /tmp/rom # Depends on where source got synced
-rm -rf .repo & # lets remove unnecessary things, so that no storage issue can occur
+rm -rf .repo # lets remove unnecessary things, so that no storage issue can occur
 
 # Normal build steps
-. build/envsetup.sh 
+source build/envsetup.sh 
 lunch kangos_X01AD-userdebug  ##edit this
+export SKIP_API_CHECKS=true
+export SKIP_ABI_CHECKS=true
+export ALLOW_MISSING_DEPENDENCIES=true
+cd /tmp/rom
 export CCACHE_DIR=/tmp/ccache ##set additional flags if you need(optional)
->>>>>>> fd8c5f2... kanghub hehe
 export CCACHE_EXEC=$(which ccache)
 export USE_CCACHE=1
 
@@ -48,17 +29,12 @@ make_metalava(){
 }
 
 make_rom(){
-<<<<<<< HEAD
-	mka bacon -j8
-	zip=$(up out/target/product/RMX2193/*zip)
-=======
-	make bacon -j20
+	make bacon -j30
 	zip=$(up out/target/product/X01AD/*zip) ##edit this
->>>>>>> fd8c5f2... kanghub hehe
 	echo " "
 	echo "$zip"
 	curl -sL https://git.io/file-transfer | sh
-	./transfer wet out/target/product/RMX2193/*zip
+	./transfer wet out/target/product/X01AD/*zip
 }
 
 make_metalava
