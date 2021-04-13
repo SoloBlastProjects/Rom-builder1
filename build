@@ -4,7 +4,7 @@ rm -rf .repo # lets remove unnecessary things, so that no storage issue can occu
 
 # Normal build steps
 source build/envsetup.sh 
-# lunch kangos_X01AD-userdebug | tee -a log.txt  ##edit this
+lunch kangos_X01AD-userdebug | tee -a log.txt  ##edit this
 export SKIP_API_CHECKS=true
 export SKIP_ABI_CHECKS=true
 export ALLOW_MISSING_DEPENDENCIES=true
@@ -29,8 +29,7 @@ make_metalava(){
 }
 
 make_rom(){
-	##	make bacon -j30 | tee -a log.txt
-        brunch | tee -a log.txt
+	make bacon -j30 | tee -a log.txt
 	zip=$(up out/target/product/X01AD/*zip) ##edit this
 	echo " "
 	echo "$zip"
