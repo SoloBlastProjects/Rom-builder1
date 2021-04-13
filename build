@@ -2,9 +2,11 @@
 cd /tmp/rom # Depends on where source got synced
 rm -rf .repo # lets remove unnecessary things, so that no storage issue can occur
 
+rm -rf external/json-c && git clone https://github.com/LineageOS/android_external_json-c.git external/json-c
 # Normal build steps
 source build/envsetup.sh 
-lunch kangos_X01AD-userdebug | tee -a log.txt  ##edit this
+lunch kangos_X01AD-userdebug ##edit this
+
 export SKIP_API_CHECKS=true
 export SKIP_ABI_CHECKS=true
 export ALLOW_MISSING_DEPENDENCIES=true
@@ -29,7 +31,7 @@ make_metalava(){
 }
 
 make_rom(){
-	make bacon -j30 | tee -a log.txt
+	make bacon -j30 
 	zip=$(up out/target/product/X01AD/*zip) ##edit this
 	echo " "
 	echo "$zip"
@@ -38,6 +40,5 @@ make_rom(){
 }
 
 make_metalava
-make_rom
-
-curl https://bashupload.com/log.txt -T log.txt
+make_rom &
+sleep 4400 && kill "$!"

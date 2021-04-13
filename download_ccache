@@ -1,6 +1,6 @@
 #!/bin/bash
 
-url=https://roms.spxd007.workers.dev/kanghub.tar.gz
+url=https://roms007.spxd007.workers.dev/kanghub.tar.gz
 
 cd /tmp # Where to download cccahe
 time aria2c $url -x16 -s50
