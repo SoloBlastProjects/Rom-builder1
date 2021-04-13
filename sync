@@ -12,11 +12,11 @@ git config --global user.name "SP-XD"
 git config --global user.email "somnatypaul007@gmail.com" 
 
 # Sync source with -q, no need unnecessary messages, you can remove -q if want! try with -j30 first, if fails, it will try again with -j8
-repo sync -c --force-sync --no-tags  --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune -j30
+repo sync -q -c --force-sync --no-tags  --no-clone-bundle -j$(nproc --all) --optimized-fetch --prune 
 cd /tmp/rom
 
 pwd
-ls
+ls | tee -a log.txt
 
 #delete lines below and replace with links of your device source
 git clone https://github.com/SP-XD/vendor_asus_X01AD vendor/asus/X01AD 
