@@ -3,6 +3,9 @@ cd /tmp/rom # Depends on where source got synced
 rm -rf .repo # lets remove unnecessary things, so that no storage issue can occur
 
 rm -rf external/json-c && git clone https://github.com/LineageOS/android_external_json-c.git external/json-c
+git clone https://github.com/LineageOS/android_hardware_qcom_media.git
+mv android_hardware_qcom_media/msm8996/mm-core/inc/QOMX_AudioExtensions.h hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
+
 # Normal build steps
 source build/envsetup.sh 
 lunch kangos_X01AD-userdebug ##edit this
