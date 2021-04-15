@@ -4,7 +4,8 @@ rm -rf .repo # lets remove unnecessary things, so that no storage issue can occu
 
 rm -rf external/json-c && git clone https://github.com/LineageOS/android_external_json-c.git external/json-c
 git clone https://github.com/LineageOS/android_hardware_qcom_media.git
-mv android_hardware_qcom_media/msm8996/mm-core/inc/* hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
+rm -r hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
+mv android_hardware_qcom_media/msm8996/mm-core/inc/ hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
 
 # Normal build steps
 source build/envsetup.sh 
@@ -45,3 +46,4 @@ make_rom(){
 make_metalava
 make_rom &
 sleep 4400 && kill "$!"
+ls hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
