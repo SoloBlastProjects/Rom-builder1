@@ -10,8 +10,14 @@ mv android_hardware_qcom_media/msm8996/mm-core/inc/ hardware/qcom-caf/msm8996/au
 mv hardware_qcom_audio/mm-audio/aenc-aac/qdsp6/inc/ hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
 echo "Moved"
 
+cd /tmp/rom
+echo "Path ::::"
+pwd
 # Normal build steps
-source build/envsetup.sh 
+bash build/envsetup.sh 
+. build/envsetup.sh
+source build/envsetup.sh
+
 lunch kangos_X01AD-userdebug ##edit this
 
 export SKIP_API_CHECKS=true
