@@ -6,8 +6,9 @@ rm -rf external/json-c && git clone https://github.com/LineageOS/android_externa
 git clone https://github.com/LineageOS/android_hardware_qcom_media.git
 git clone https://github.com/erwinabs/hardware_qcom_audio
 rm -r hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
-mv android_hardware_qcom_media/msm8996/mm-core/inc/ hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
-mv hardware_qcom_audio/mm-audio/aenc-aac/qdsp6/inc/ hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
+mv android_hardware_qcom_media/msm8996/mm-core/inc/* hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
+cd /tmp/rom
+mv hardware_qcom_audio/mm-audio/aenc-aac/qdsp6/inc/* hardware/qcom-caf/msm8996/audio/mm-audio/aenc-aac/qdsp6/inc/
 echo "Moved"
 
 cd /tmp/rom
